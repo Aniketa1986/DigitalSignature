@@ -69,10 +69,12 @@ public class MainActivity extends ActionBarActivity {
             try {
                 ExifInterface exif = new ExifInterface(picturePath);
                 EditText ed = (EditText) findViewById(R.id.senderId);
-                Log.d("MainActivity", "---Rotational TAG INITIAL --- " + exif.getAttribute(ExifInterface.TAG_ORIENTATION));
+                //Log.d("MainActivity", "---Rotational TAG INITIAL --- " + exif.getAttribute(ExifInterface.TAG_ORIENTATION));
+                Log.d("MainActivity", "---Changing the MODEL TAG INITIAL --- " + exif.getAttribute(ExifInterface.TAG_MODEL));
                 Log.d("EXIF ATTRIBUTE 2 B SAVED", ed.getText().toString());
-                exif.setAttribute("UserComment", ed.getText().toString());
-                exif.setAttribute(ExifInterface.TAG_ORIENTATION, ""+ExifInterface.ORIENTATION_ROTATE_90);
+                //exif.setAttribute("UserComment", ed.getText().toString());
+                //exif.setAttribute(ExifInterface.TAG_ORIENTATION, ""+ExifInterface.ORIENTATION_ROTATE_90);
+                exif.setAttribute(ExifInterface.TAG_MODEL, ""+ed.getText().toString());
                 exif.saveAttributes();
 
             } catch (IOException e) {
@@ -87,8 +89,8 @@ public class MainActivity extends ActionBarActivity {
             ExifInterface exif2;
             try {
                 exif2 = new ExifInterface(picturePath);
-                Log.d("MainActivity", "---user comment --- " + exif2.getAttribute("UserComment"));
-                Log.d("MainActivity", "---Rotational TAG FINAL --- " + exif2.getAttribute(ExifInterface.TAG_ORIENTATION));
+                Log.d("MainActivity", "--- TAG MODEL --- " + exif2.getAttribute(ExifInterface.TAG_MODEL));
+                //Log.d("MainActivity", "---Rotational TAG FINAL --- " + exif2.getAttribute(ExifInterface.TAG_ORIENTATION));
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
